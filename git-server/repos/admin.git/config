@@ -1,0 +1,6 @@
+[core]
+	repositoryformatversion = 0
+	filemode = true
+	bare = true
+[remote "origin"]
+	url = /home/g00se/Sandbox/dockerbuild/dockerproject/tatooine_project/git-server/repos/admin

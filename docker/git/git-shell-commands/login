@@ -1,0 +1,4 @@
+#!/bin/sh
+printf '%s\n' "Welcome to tatooine!"
+printf '%s\n' "This GIT server is functioning.  Exiting..."
+exit 128

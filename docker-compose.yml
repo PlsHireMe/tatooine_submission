@@ -25,4 +25,10 @@ services:
             - 9000
         volumes:
             - .:/var/www/html
-
+    git-server:
+        build: ./docker/git/
+        ports:
+            - "2222:22"
+        volumes:
+            - ./git-server/keys:/git-server/keys
+            - ./git-server/repos:/git-server/repos

@@ -11,14 +11,10 @@ if [ "$(ls -A /git-server/keys/)" ]; then
 fi
 
 # Checking permissions and fixing SGID bit in repos folder
-# More info: https://github.com/jkarlosb/git-server-docker/issues/1
-if [ "$(ls -A /git-server/repos/)" ]; then
-  echo "Point"
-  cd /git-server/repos
-  chown -R admin:admin .
-  chmod -R ug+rwX .
-  find . -type d -exec chmod g+s '{}' + #have to set the 
-fi
+cd /git-server/repos
+chown -R admin:admin .
+chmod -R ug+rwX .
+find . -type d -exec chmod g+s '{}' + #have to set the 
 
 # -D flag avoids executing sshd as a daemon
 /usr/sbin/sshd -D

@@ -10,7 +10,7 @@ services:
     nginx:
         build: ./docker/nginx/
         ports:
-            - 8080:443
+            - 443:443
         volumes:
             - ./ssl/dhparam.pem:/etc/ssl/certs/dhparam.pem
             - ./ssl/nginx-selfsigned.key:/etc/ssl/private/nginx-selfsigned.key
@@ -19,7 +19,8 @@ services:
         volumes_from:
             - php
             - git-server:ro
-#        tty: true
+        environment:
+            - COMPOSE_HTTP_TIMEOUT=120
     php:
         build: ./docker/php/
         expose:
@@ -29,7 +30,13 @@ services:
     git-server:
         build: ./docker/git/
         ports:
-            - "2222:22"
+            - "22:22"
         volumes:
             - ./git-server/keys:/git-server/keys
             - ./git-server/repos:/git-server/repos
+    copy:
+        build: ./docker/copy/
+        volumes_from:
+            - php
+            - git-server:ro
+        tty: true

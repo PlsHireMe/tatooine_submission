@@ -10,23 +10,19 @@ services:
         ports:
             - 443:443
         volumes:
-            - ./ssl/dhparam.pem:/etc/ssl/certs/dhparam.pem
-            - ./ssl/nginx-selfsigned.key:/etc/ssl/private/nginx-selfsigned.key
-            - ./ssl/nginx-selfsigned.crt:/etc/ssl/certs/nginx-selfsigned.crt
-            - ./default.conf:/etc/nginx/conf.d/default.conf
+            - ./ssl.conf/dhparam.pem:/etc/ssl/certs/dhparam.pem
+            - ./ssl.conf/nginx-selfsigned.key:/etc/ssl/private/nginx-selfsigned.key
+            - ./ssl.conf/nginx-selfsigned.crt:/etc/ssl/certs/nginx-selfsigned.crt
+            - ./nginx.conf/default.conf:/etc/nginx/conf.d/default.conf
         volumes_from:
             - php
             - git-server:ro
-       # environment:
-        #    - COMPOSE_HTTP_TIMEOUT=120
     php:
-        build: ./docker/php/
+        image: php:7.0-fpm
         expose:
             - 9000
         volumes:
             - ./web:/var/www/html
-        #environment:
-         #   - COMPOSE_HTTP_TIMEOUT=120
     git-server:
         build: ./docker/git/
         ports:

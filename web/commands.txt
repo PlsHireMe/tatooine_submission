@@ -1,7 +1,0 @@
-   PID TTY          TIME CMD
-     1 pts/0    00:00:00 sh
-     6 pts/0    00:00:00 gitgrab_d.sh
-  1484 pts/0    00:00:00 gitgrab_d.sh
-  1485 pts/0    00:00:00 gitgrab_d.sh
-  1490 pts/0    00:00:00 ps
-  1491 pts/0    00:00:00 git

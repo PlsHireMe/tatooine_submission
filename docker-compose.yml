@@ -8,7 +8,6 @@ volumes:
 
 services:
     nginx:
-#        image: nginx:latest
         build: ./docker/nginx/
         ports:
             - 8080:443
@@ -19,12 +18,14 @@ services:
             - ./default.conf:/etc/nginx/conf.d/default.conf
         volumes_from:
             - php
+            - git-server:ro
+#        tty: true
     php:
         build: ./docker/php/
         expose:
             - 9000
         volumes:
-            - .:/var/www/html
+            - ./web:/var/www/html
     git-server:
         build: ./docker/git/
         ports:

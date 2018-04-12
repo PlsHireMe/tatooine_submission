@@ -1,8 +1,4 @@
-version: '2'
-
-volumes:
-    database_data:
-        driver: local
+version: "2"
 
 services:
     nginx:
@@ -36,3 +32,4 @@ services:
             - php
             - git-server:ro
         tty: true
+

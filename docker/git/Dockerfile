@@ -8,9 +8,12 @@ RUN apk add --no-cache \
 RUN ssh-keygen -A
 
 WORKDIR /git-server/
-RUN mkdir /git-server/repos
-RUN mkdir /git-server/keys && adduser -D -s /usr/bin/git-shell admin && echo admin:empiredidnothingwrong | chpasswd && mkdir /home/admin/.ssh
-RUN mkdir /git-server/files
+
+RUN mkdir /git-server/repos && \
+	mkdir /git-server/keys && \
+	adduser -D -s /usr/bin/git-shell admin && \
+	echo admin:empiredidnothingwrong | chpasswd && \
+	mkdir /home/admin/.ssh
 
 COPY build-git.sh build-git.sh
 

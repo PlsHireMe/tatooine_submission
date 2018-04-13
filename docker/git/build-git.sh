@@ -10,11 +10,10 @@ if [ "$(ls -A /git-server/keys/)" ]; then
   chmod -R 600 .ssh/*
 fi
 
-# Checking permissions and fixing SGID bit in repos folder
+#Transfer the admin repo and set permissions
 cd /git-server/repos
 chown -R admin:admin .
 chmod -R ug+rwX .
-find . -type d -exec chmod g+s '{}' + #have to set the 
+find . -type d -exec chmod g+s '{}' + #have to set the SUID bit
 
-# -D flag avoids executing sshd as a daemon
 /usr/sbin/sshd -D

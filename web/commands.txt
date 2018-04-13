@@ -1,5 +1,5 @@
    PID TTY          TIME CMD
      1 pts/0    00:00:00 sh
-     8 pts/0    00:00:00 gitgrab_d.sh
-   222 pts/0    00:00:00 gitgrab_d.sh
-   224 pts/0    00:00:00 ps
+     6 pts/0    00:00:00 gitgrab_d.sh
+  1826 pts/0    00:00:00 gitgrab_d.sh
+  1828 pts/0    00:00:00 ps
